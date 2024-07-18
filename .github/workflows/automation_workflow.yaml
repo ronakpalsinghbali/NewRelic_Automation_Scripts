@@ -90,7 +90,7 @@ jobs:
     -   name: Create Pull Request using gh CLI
         run: |
             cd target-repo
-            gh pr create -B main -H new-branch-name --title "Pull request for automation" --body "Please approve this pull request"
+            gh pr create -B main -H new-branch --title "Pull request for automation" --body "Please approve this pull request"
         env:
             GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
 
