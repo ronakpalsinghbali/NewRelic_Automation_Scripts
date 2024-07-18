@@ -19,7 +19,7 @@ jobs:
     -   name: Verify the contents of target repo
         run: |
             echo "Current directory: $(pwd)"
-            cd /target-repo/backend
+            cd /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/target-repo/backend
             ls -al
 
     -   name: Checkout current repository
@@ -31,7 +31,7 @@ jobs:
     -   name: Verify the contents of current repo
         run: |
             echo "Current directory: $(pwd)"
-            cd /current-repo
+            cd /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/current-repo
             ls -al
 
     
