@@ -50,13 +50,24 @@ jobs:
         run: |
             cd target-repo/backend
             python3 automation.py
+        env:
+            APP_NAME: "Ronak-APN-ToDo-APP-2"
+            LICENSE_KEY: ${{secrets.NEWRELIC_LICENSE_KEY}}
+            APP_ENTRY_FILE: "Server.js"
 
     -   name: Verify the changes made for new relic agent
         run: |
             echo "Current directory: $(pwd)"
             cd target-repo/backend
             ls -al
-            
+    
+    -   name: Checking the contents of the files changes
+        run: |
+            cd target-repo/backend
+            ls -al
+            cat newrelic.js
+            cat package.json
+            cat .gitignore
 
     -   name: Set up Git in target repo
         run: |

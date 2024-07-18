@@ -6,10 +6,10 @@ import platform
 
 
 # Variables
-APP_NAME = "Ronak-APN-ToDo-APP-1"
-LICENSE_KEY = "19b39ad8f492b8deecdd4135a9534e9fc78dNRAL"
-APP_ENTRY_FILE = "Server.js"
-OS = "Windows"
+APP_NAME = os.getenv('APP_NAME')
+LICENSE_KEY = os.getenv('LICENSE_KEY')
+APP_ENTRY_FILE = os.getenv('APP_ENTRY_FILE')
+
 
 def run_command(command):
     """Run a system command and check for errors."""
@@ -30,10 +30,6 @@ def copy_newrelic_file():
             shutil.copy(src, dst)
         else:
             os.system(f'cp {src} {dst}')
-        # if OS == "Windows":
-        #     shutil.copy(src, dst)
-        # elif OS == "Linux":
-        #     os.system(f'cp {src} {dst}')
         print(f'Copied {src} to {dst}')
     else:
         print(f'{src} not found.')
