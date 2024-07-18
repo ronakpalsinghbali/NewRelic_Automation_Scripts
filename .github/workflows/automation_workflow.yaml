@@ -8,19 +8,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    -   name: Checkout the repository
-        uses: actions/checkout@v2
+    -   name: Checkout target repository
+        uses: actions/checkout@v4
         with:
             repository: ronakpalsinghbali/MERN_APP_NewRelic_Test
             token: ${{ secrets.TARGET_REPO_TOKEN }}
             ref: main
     
-    -   name: Verify the contents of the repo
+    -   name: Verify the contents of target repo
         run: |
             echo "Current directory: $(pwd)"
             cd ./backend
             ls -al
 
+    -   name: Checkout current repository
+        uses: actions/checkout@v4
+
+    
+    -   name: Verify the contents of current repo
+        run: |
+            echo "Current directory: $(pwd)"
+            ls -al
     # - name: Set up Git
     #   run: |
     #     git config --global user.name 'github-actions'
