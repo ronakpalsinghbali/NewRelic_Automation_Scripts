@@ -4,21 +4,26 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-script-and-push:
+  Clone-Run-script-Push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v2
-      with:
-        repository: user/repo1
-        token: ${{ secrets.TARGET_REPO_TOKEN }}
-        ref: main
+    -   name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+            repository: ronakpalsinghbali/MERN_APP_NewRelic_Test
+            token: ${{ secrets.TARGET_REPO_TOKEN }}
+            ref: main
+    
+    -   name: Verify the contents of the repo
+        run: |
+            echo "Current directory: $(pwd)"
+            ls -al
 
-    - name: Set up Git
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
+    # - name: Set up Git
+    #   run: |
+    #     git config --global user.name 'github-actions'
+    #     git config --global user.email 'github-actions@github.com'
 
     # - name: Run the script
     #   run: |
