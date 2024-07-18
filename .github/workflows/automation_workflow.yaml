@@ -34,7 +34,21 @@ jobs:
             cd /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/current-repo
             ls -al
 
-    
+    -   name: Copy automation.py to target repo backend
+        run: |
+            echo "Current directory: $(pwd)"
+            cp /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/current-repo/automation.py /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/target-repo/backend
+
+    -   name: Verify the contents of target repo again
+        run: |
+            echo "Current directory: $(pwd)"
+            cd /home/runner/work/NewRelic_Automation_Scripts/NewRelic_Automation_Scripts/target-repo/backend
+            ls -al
+
+
+
+
+
     # - name: Set up Git
     #   run: |
     #     git config --global user.name 'github-actions'
