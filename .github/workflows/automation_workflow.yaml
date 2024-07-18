@@ -19,7 +19,6 @@ jobs:
     -   name: Verify the contents of target repo
         run: |
             echo "Current directory: $(pwd)"
-            cd ./backend
             ls -al
 
     -   name: Checkout current repository
