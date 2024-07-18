@@ -12,17 +12,18 @@ APP_ENTRY_FILE = os.getenv('APP_ENTRY_FILE')
 
 
 def run_command(command):
-    """Run a system command and check for errors."""
+    # Run a system command and check for errors.
     result = subprocess.run(command, shell=True, check=True, capture_output=True, text=True)
     if result.stderr:
         print(result.stderr)
 
 def install_newrelic():
-    """Install New Relic using npm."""
+    # Install New Relic using npm.
     run_command("npm install newrelic")
+    print('Installed newrelic module')
 
 def copy_newrelic_file():
-    """Copy newrelic.js from node_modules to the root directory."""
+    # Copy newrelic.js from node_modules to the root directory.
     src = os.path.join('node_modules', 'newrelic', 'newrelic.js')
     dst = 'newrelic.js'
     if os.path.exists(src):
@@ -35,7 +36,7 @@ def copy_newrelic_file():
         print(f'{src} not found.')
 
 def edit_newrelic_file():
-    """Edit newrelic.js to include the app name and license key."""
+    # Edit newrelic.js to include the app name and license key.
     with open('newrelic.js', 'r') as file:
         content = file.read()
     content = content.replace("app_name: ['My Application']", f"app_name: ['{APP_NAME}']")
@@ -45,7 +46,7 @@ def edit_newrelic_file():
     print('Edited newrelic.js with app name and license key.')
 
 def update_package_json():
-    """Update package.json to include New Relic in the start script."""
+    # Update package.json to include New Relic in the start script.
     with open('package.json', 'r') as file:
         package_json = json.load(file)
     package_json.setdefault('scripts', {})
