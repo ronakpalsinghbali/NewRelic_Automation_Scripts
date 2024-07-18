@@ -2,6 +2,11 @@ name: Clone, Run Script, and Push
 
 on:
   workflow_dispatch:
+    inputs:
+        NEWRELIC_APP_NAME:
+            description: "App name for newrelic"
+            required: true
+            type: string
 
 jobs:
   Clone-Run-script-Push:
@@ -51,7 +56,7 @@ jobs:
             cd target-repo/backend
             python3 automation.py
         env:
-            APP_NAME: "Ronak-APN-ToDo-APP-2"
+            APP_NAME: ${{inputs.NEWRELIC_APP_NAME}}
             LICENSE_KEY: ${{secrets.NEWRELIC_LICENSE_KEY}}
             APP_ENTRY_FILE: "Server.js"
 
