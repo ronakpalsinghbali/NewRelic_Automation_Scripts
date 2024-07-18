@@ -7,6 +7,16 @@ on:
             description: "App name for newrelic"
             required: true
             type: string
+        
+        OWNER_NAME:
+            description: "Name of the GitHub Account Owner"
+            required: true
+            type: string
+        
+        REPO_NAME:
+            description: "Name of the GitHub Account REPO"
+            required: true
+            type: string
 
 jobs:
   Clone-Run-script-Push:
@@ -16,7 +26,7 @@ jobs:
     -   name: Checkout target repository
         uses: actions/checkout@v4
         with:
-            repository: ronakpalsinghbali/MERN_APP_NewRelic_Test
+            repository: ${{inputs.OWNER_NAME}}/${{inputs.REPO_NAME}}
             token: ${{ secrets.TARGET_REPO_TOKEN }}
             path: target-repo
             ref: main
