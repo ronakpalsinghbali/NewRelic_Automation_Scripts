@@ -13,6 +13,7 @@ jobs:
         with:
             repository: ronakpalsinghbali/MERN_APP_NewRelic_Test
             token: ${{ secrets.TARGET_REPO_TOKEN }}
+            path: MERN_APP_NewRelic_Test
             ref: main
     
     -   name: Verify the contents of target repo
@@ -23,12 +24,16 @@ jobs:
 
     -   name: Checkout current repository
         uses: actions/checkout@v4
+        with:
+            path: NewRelic_Automation_Scripts
 
     
     -   name: Verify the contents of current repo
         run: |
             echo "Current directory: $(pwd)"
             ls -al
+
+    
     # - name: Set up Git
     #   run: |
     #     git config --global user.name 'github-actions'
