@@ -38,12 +38,25 @@ jobs:
         run: |
             echo "Current directory: $(pwd)"
             cp current-repo/automation.py target-repo/backend
+            cp current-repo/remove.py target-repo/backend/
 
     -   name: Verify the contents of target repo again
         run: |
             echo "Current directory: $(pwd)"
             cd target-repo/backend
             ls -al
+
+    -   name: Run automation script in target repo backend
+        run: |
+            cd target-repo/backend
+            python3 automation.py
+
+    -   name: Verify the changes made for new relic agent
+        run: |
+            echo "Current directory: $(pwd)"
+            cd target-repo/backend
+            ls -al
+            
 
     -   name: Set up Git in target repo
         run: |
@@ -52,15 +65,15 @@ jobs:
             git config --global user.name 'github-actions'
             git config --global user.email 'github-actions@github.com'
       
-    -   name: Commit and push changes to target repo
-        run: |
-            cd target-repo
-            git status
-            git add backend/automation.py
-            git commit -m "Add automation.py to backend"
-            git push origin main
-        env:
-            GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+    # -   name: Commit and push changes to target repo
+    #     run: |
+    #         cd target-repo
+    #         git status
+    #         git add backend/automation.py
+    #         git commit -m "Add automation.py to backend"
+    #         git push origin main
+    #     env:
+    #         GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
 
 
 
