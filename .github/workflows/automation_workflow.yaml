@@ -48,6 +48,7 @@ jobs:
     -   name: Set up Git in target repo
         run: |
             cd target-repo
+            ls -l
             git config --global user.name 'github-actions'
             git config --global user.email 'github-actions@github.com'
       
