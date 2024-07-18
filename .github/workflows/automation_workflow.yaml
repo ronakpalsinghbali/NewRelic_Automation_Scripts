@@ -18,6 +18,7 @@ jobs:
     -   name: Verify the contents of the repo
         run: |
             echo "Current directory: $(pwd)"
+            cd ./backend
             ls -al
 
     # - name: Set up Git
